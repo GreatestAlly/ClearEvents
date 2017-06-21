@@ -13,7 +13,7 @@ namespace ClearEvents.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Clear All");
+            DisplayName.SetDefault("Ankh of Cleansing");
             Tooltip.SetDefault("Clear invasions and events.");
         }
 
@@ -22,14 +22,14 @@ namespace ClearEvents.Items
             item.useTime = 10;
             item.width = 18;
             item.height = 18;
-            item.maxStack = 1;
+            item.maxStack = 99;
             item.useAnimation = 30;
             item.useStyle = 3;
             item.noMelee = true;
             item.value = Item.sellPrice(0, 7, 0, 0);
             item.rare = 4;
             item.UseSound = SoundID.Item29;
-            item.consumable = false;
+            item.consumable = true;
         }
 
         public override bool CanUseItem(Player player)
@@ -65,9 +65,29 @@ namespace ClearEvents.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.SilverBar, 5);
+            recipe.AddIngredient(ItemID.SpikyBall, 20);
+            recipe.AddIngredient(ItemID.SilverBullet, 99);
+            recipe.AddIngredient(ItemID.Gel, 30);
+            recipe.AddTile(TileID.Anvils);
+            recipe.SetResult(this, 1);
+            recipe.AddRecipe();
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.GoldBar, 5);
+            recipe.AddIngredient(ItemID.SpikyBall, 20);
+            recipe.AddIngredient(ItemID.SilverBullet, 99);
+            recipe.AddIngredient(ItemID.Gel, 30);
+            recipe.AddTile(TileID.Anvils);
+            recipe.SetResult(this, 1);
+            recipe.AddRecipe();
+
+            // for testing purposes
+            /*
+            recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.DirtBlock);
             recipe.SetResult(this, 1);
             recipe.AddRecipe();
+            */
         }
     }
 }
